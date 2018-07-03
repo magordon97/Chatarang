@@ -11,7 +11,7 @@ class Sidebar extends Component{
 }
 
 const styles = {
-    backgroundColor: 'Aquamarine',
+    backgroundColor: 'PaleTurquoise',
 }
 
 export default Sidebar

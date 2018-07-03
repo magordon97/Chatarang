@@ -23,20 +23,40 @@ class Chat extends Component{
                         displayName: 'Not Davey',
                         email: 'davey@fretless.com',
                     },
-                    body: ' Im not Davey',
+                    body: ' I\'m not Davey',
                    },
             ]
         }
     }
+
+    addMessage = (body) => {
+        const messages = [...this.state.messages]
+
+        messages.push({
+            id: Date.now(),
+            user: {
+                uid: '112233',
+                displayName: 'Bob',
+                email: 'bob@bobrulez.com',
+            },
+            body: body,
+        })
+        this.setState({messages: messages})
+    }
+
     render(){
         return(
-            <div className='Chat'>
+            <div className='Chat' style={styles}>
                 <ChatHeader />
                 <MessageList messages={this.state.messages}/>
-                <MessageForm />
+                <MessageForm addMessage={this.addMessage}/>
             </div>
         )
     }
+}
+
+const styles = {
+    backgroundColor: 'PeachPuff',
 }
 
 export default Chat
