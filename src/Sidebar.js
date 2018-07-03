@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 
-class Sidebar extends Component{
-    render(){
+const Sidebar = (props) => {
         return(
             <div className='Sidebar' style={styles}>
-                Sidebar
+                {props.user.displayName}
             </div>
         )
     }
-}
 
 const styles = {
     backgroundColor: 'PaleTurquoise',

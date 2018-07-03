@@ -9,9 +9,11 @@ class MessageForm extends Component{
         ev.preventDefault()
         this.setState({body: ev.target.value})
     }
+
     handleSubmit = (ev) =>{
         ev.preventDefault()
         this.props.addMessage(this.state.body)
+        this.setState({body: ''})
     }
 
     render(){
