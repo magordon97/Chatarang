@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 
-const Avatar = (props) => {
+const Avatar = ({user, style}) => {
     return(
         <div 
             className="Avatar"
             style={{
                 ...styles,
-                background: `url(https://api.adorable.io/avatars/32/${props.user.email})`,
+                ...style,
+                background: `url(https://api.adorable.io/avatars/32/${user.email})`,
             }}
         ></div>
     )
@@ -17,6 +18,7 @@ const styles = {
         width: '40px',
         fontSize: '1rem',
         borderRadius: '20px',
+        marginRight: '0.5rem',
 }
 
 export default Avatar
