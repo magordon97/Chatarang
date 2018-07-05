@@ -54,6 +54,9 @@ class Chat extends Component{
 
 const styles = {
     backgroundColor: 'PeachPuff',
+    flex: '1',
+    display: 'flex',
+    flexDirection: 'column',
 }
 
 export default Chat

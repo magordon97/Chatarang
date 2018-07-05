@@ -8,9 +8,9 @@ const RoomList = () => {
               style={styles.children}
             >
               <h2 className={css(styles.h2)}>Rooms</h2>
-              <ul>
-                <li><a href="#">general</a></li>
-                <li><a href="#">random</a></li>
+              <ul className={css(styles.list)}>
+                <li className={css(styles.item)}><a href="#" className={css(styles.link)}>general</a></li>
+                <li className={css(styles.item)}><a href="#" className={css(styles.link)}>random</a></li>
               </ul>
         </nav>
     )
