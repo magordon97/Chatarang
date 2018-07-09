@@ -19,10 +19,8 @@ class App extends Component {
     auth.onAuthStateChanged(
       user => {
         if (user) {
-          // User is signed in
           this.handleAuth(user)
         } else {
-          // User is signed out
           this.handleUnauth()
         }
       }

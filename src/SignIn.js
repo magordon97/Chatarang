@@ -26,23 +26,41 @@ class SignIn extends Component {
 
     render(){
         return(
-            <div className="SignIn">
-                <form onSubmit={this.handleSubmit}>
-                    {/* <label htmlFor='email'>Email</label>
-                    <input
-                        required
-                        autoFocus
-                        type='email'
-                        name='email'
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                    />
-                    <button
-                        type='submit'
-                    >
-                    Sign in
-                    </button> */}
-                    <button
+            <div className={`SignIn ${css(styles.signIn)}`}>
+        <header className={css(styles.header)}>
+          <span className={css(styles.title)}>
+            <i className="fas fa-hashtag"></i>
+            Chatarang
+          </span>
+        </header>
+        <main className={css(styles.main)}>
+          <form
+            className={css(styles.form)}
+            onSubmit={this.handleSubmit}
+          >
+            <h2>Sign In</h2>
+            {/* <label
+              htmlFor="email"
+              className={css(styles.label)}
+            >
+              Email
+            </label>
+            <input
+              autoFocus
+              type="email"
+              name="email"
+              className={css(styles.input)}
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+            <button
+              type="submit"
+              className={css(styles.button)}
+            >
+              Sign In
+            </button> */}
+
+            <button
               type="button"
               className={css(styles.button)}
               onClick={() => this.authenticate(googleProvider)}
@@ -59,11 +77,18 @@ class SignIn extends Component {
               <i className={`fab fa-github ${css(styles.brandIcon)}`}></i>
               Sign in with GitHub
             </button>
-                </form>
-            </div>
+          </form>
+
+          <div className="blurb">
+            <h2 className={css(styles.h2)}>
+              You're in good company.
+            </h2>
+            <p>Ones of people are already using Chatarang.</p>
+          </div>
+        </main>
+      </div>
         )
     }
-
 }
 
 const styles = StyleSheet.create({
@@ -102,6 +127,7 @@ const styles = StyleSheet.create({
       width: '40rem',
       backgroundColor: 'white',
       boxShadow: '0 1px 1px rgba(0,0,0,.1)',
+      margin: 'auto',
       marginBottom: '2rem',
       paddingBottom: '2rem',
     },
