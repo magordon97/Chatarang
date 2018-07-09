@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Avatar from './Avatar'
 import SignOut from './SignOut';
 
+const yea = 'boi'
+
 const UserInfo = ({user, signOut}) => {
     return(
     <div
@@ -29,6 +31,7 @@ const styles = {
       },
       user: {
         flex: 1,
+        overflow: 'hidden',
       },
 }
 
