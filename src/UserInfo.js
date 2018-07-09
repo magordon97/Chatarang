@@ -31,6 +31,7 @@ const styles = {
         flex: 1,
         overflow: 'hidden',
         textOverflow: 'ellipsis',
+        fontSize: '1.5rem',
       },
 }
 

@@ -56,6 +56,7 @@ const styles = {
     flex: '1',
     display: 'flex',
     flexDirection: 'column',
+    fontSize: '1.5rem',
 }
 
 export default Chat

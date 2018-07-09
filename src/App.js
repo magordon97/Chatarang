@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { auth } from './base'
 import Main from './Main'
 import SignIn from './SignIn'
 
@@ -14,9 +15,34 @@ class App extends Component {
     }
   }
 
-  handleAuth = (user) =>{
-    this.setState({user})
+  componentDidMount() {
+    auth.onAuthStateChanged(
+      user => {
+        if (user) {
+          // User is signed in
+          this.handleAuth(user)
+        } else {
+          // User is signed out
+          this.handleUnauth()
+        }
+      }
+    )
+  }
+
+  handleAuth = (oAuthUser) => {
+    const user = {
+      uid: oAuthUser.uid,
+      displayName: oAuthUser.displayName,
+      email: oAuthUser.email,
+      photoUrl: oAuthUser.photoURL,
+    }
+    this.setState({ user })
     localStorage.setItem('user', JSON.stringify(user))
+  }
+
+  handleUnauth = () => {
+    this.setState({ user: {} })
+    localStorage.removeItem('user')
   }
 
   signedIn = () => {
@@ -24,8 +50,7 @@ class App extends Component {
   }
 
   signOut = () => {
-    this.setState({ user: {} })
-    localStorage.removeItem('user')
+    auth.signOut()
   }
 
   render() {
