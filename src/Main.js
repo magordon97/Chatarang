@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Sidebar from './Sidebar'
 import Chat from './Chat'
+import base from './base'
+import RoomForm from './RoomForm';
 
 class Main extends Component{
     state = {
@@ -26,10 +28,47 @@ class Main extends Component{
         }
       }
 
+      componentDidMount() {
+        this.roomsRef = base.syncState(
+          'rooms',
+          {
+            context: this,
+            state: 'rooms',
+            defaultValue: {
+              general: {
+                name: 'general',
+                description: 'Chat about whatever',
+              },
+            }
+          }
+        )
+      }
+    
+      componentWillUnmount() {
+        base.removeBinding(this.roomsRef)
+      }
+
+      addRoom = room => {
+        const rooms = {...this.state.rooms}
+        rooms[room.name] = room
+
+        this.setState({ rooms })
+
+      }
+
+      setCurrentRoom = roomName => {
+          const room = this.state.rooms[roomName]
+          this.setState({room})
+      }
+
     render(){
         return(
             <div className='Main' style={styles}>
-                <Sidebar user={this.props.user} signOut={this.props.signOut} rooms={this.state.rooms}/>
+                <RoomForm />
+                <Sidebar user={this.props.user}
+                         signOut={this.props.signOut}
+                         rooms={this.state.rooms}
+                         setCurrentRoom={this.setCurrentRoom} />
                 <Chat user={this.props.user} room={this.state.room}/>
             </div>
         )

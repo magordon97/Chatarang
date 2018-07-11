@@ -1,7 +1,8 @@
 import React from 'react'
 import {StyleSheet, css} from 'aphrodite'
+import Room from './Room'
 
-const RoomList = ({rooms}) => {
+const RoomList = ({rooms, setCurrentRoom }) => {
     return(
         <nav
               className={`RoomList ${css(styles.nav)}`}
@@ -12,9 +13,10 @@ const RoomList = ({rooms}) => {
                 {
                   Object.keys(rooms).map(
                     roomName => (
-                      <li className={css(styles.item)} key={roomName}>
-                        <a href="#" className={css(styles.link)}>{roomName}</a>
-                      </li>
+                      <Room key={roomName} 
+                            roomName={roomName} 
+                            setCurrentRoom={setCurrentRoom}
+                      />
                     )
                   )
                 }
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
       },
     
       h2: {
-        fontSize: '1rem',
+        fontSize: '2rem',
       },
       
       list: {
