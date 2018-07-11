@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import UserInfo from './UserInfo'
 import RoomList from './RoomList';
 
-const Sidebar = ({user, signOut, rooms, setCurrentRoom }) => {
+const Sidebar = ({user, signOut, rooms, setCurrentRoom, showRoomForm }) => {
         return(
             <aside
             className="Sidebar"
@@ -10,7 +10,10 @@ const Sidebar = ({user, signOut, rooms, setCurrentRoom }) => {
           >
            <UserInfo user={user} signOut={signOut}/>
             <h1 style={styles.h1}>XTBC 18</h1>
-            <RoomList rooms={rooms} setCurrentRoom={setCurrentRoom} />
+            <RoomList rooms={rooms} 
+                      setCurrentRoom={setCurrentRoom}
+                      showRoomForm={showRoomForm}
+            />
           </aside>
         )
     }
